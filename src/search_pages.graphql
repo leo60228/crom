@@ -1,0 +1,18 @@
+query SearchPages($query: String!) {
+  searchPages(query: $query) {
+    url,
+    alternateUrls,
+    wikidotInfo {
+      title,
+      rating,
+      tags,
+      wikidotId,
+      createdAt,
+      revisionCount,
+      createdBy {
+        name,
+      },
+      thumbnailUrl,
+    }
+  }
+}
