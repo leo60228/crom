@@ -3,8 +3,18 @@ name = "crom"
 version = "0.1.0"
 authors = ["leo60228 <leo@60228.dev>"]
 edition = "2018"
+description = "API client for Crom, a scraper for the SCP Wiki and related projects"
+repository = "https://github.com/leo60228/crom"
+homepage = "https://github.com/leo60228/crom"
+readme = "README.md"
+keywords = ["api", "crom", "scp", "client"]
+categories = ["api-bindings", "asynchronous"]
+license = "MIT OR Apache-2.0"
 
-# See more keys and their definitions at https://doc.rust-lang.org/cargo/reference/manifest.html
+[badges]
+is-it-maintained-issue-resolution = { repository = "leo60228/crom" }
+is-it-maintained-open-issues = { repository = "leo60228/crom" }
+maintenance = { status = "experimental"}
 
 [dependencies]
 surf = "2.0.0-alpha.4"
