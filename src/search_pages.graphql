@@ -1,7 +1,11 @@
-query SearchPages($query: String!) {
-  searchPages(query: $query) {
+query SearchPages($query: String!, $filter: SearchPagesFilter!) {
+  searchPages(query: $query, filter: $filter) {
     url,
     alternateUrls,
+    alternateTitles {
+      type,
+      title,
+    },
     wikidotInfo {
       title,
       rating,

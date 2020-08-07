@@ -7,6 +7,7 @@
 mod graphql;
 
 pub use graphql::search_pages::SearchPagesSearchPages as Page;
+pub use graphql::search_pages::SearchPagesSearchPagesAlternateTitles as PageAlternateTitle;
 pub use graphql::search_pages::SearchPagesSearchPagesWikidotInfo as WikidotInfo;
 pub use graphql::search_pages::SearchPagesSearchPagesWikidotInfoCreatedBy as CreatedBy;
 
@@ -90,11 +91,14 @@ impl<C: HttpClient> Client<C> {
     }
 
     /// Search pages.
-    pub async fn search(&self, query: &str) -> Result<Vec<Page>> {
+    pub async fn search(&self, query: &str, base_urls: Option<Vec<String>>) -> Result<Vec<Page>> {
         use graphql::{search_pages::*, SearchPages};
 
         let query = query.to_string();
-        let variables = Variables { query };
+        let filter = SearchPagesFilter {
+            any_base_url: base_urls,
+        };
+        let variables = Variables { query, filter };
         let body = SearchPages::build_query(variables);
 
         let resp: Response<ResponseData> = self
