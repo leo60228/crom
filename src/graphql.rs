@@ -1,7 +1,9 @@
+use chrono::prelude::*;
 use graphql_client::GraphQLQuery;
+use url::Url;
 
-type URL = String;
-type DateTime = String;
+type URL = Url;
+type DateTime = chrono::DateTime<Utc>;
 
 #[derive(GraphQLQuery)]
 #[graphql(

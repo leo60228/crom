@@ -15,6 +15,7 @@ use graphql_client::{GraphQLQuery, Response};
 use http_client::HttpClient;
 use std::result::Result as StdResult;
 use thiserror::Error;
+use url::Url;
 
 #[cfg(feature = "native-client")]
 use http_client::native::NativeClient;
@@ -91,7 +92,7 @@ impl<C: HttpClient> Client<C> {
     }
 
     /// Search pages.
-    pub async fn search(&self, query: &str, base_urls: Option<Vec<String>>) -> Result<Vec<Page>> {
+    pub async fn search(&self, query: &str, base_urls: Option<Vec<Url>>) -> Result<Vec<Page>> {
         use graphql::{search_pages::*, SearchPages};
 
         let query = query.to_string();

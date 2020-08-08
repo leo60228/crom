@@ -6,7 +6,7 @@ async fn main() -> surf::Result<()> {
     let pages = client
         .search(
             "5000",
-            Some(vec!["http://scp-wiki.wikidot.com".to_string()]),
+            Some(vec!["http://scp-wiki.wikidot.com".parse().unwrap()]),
         )
         .await?;
 
